@@ -1,0 +1,185 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #172033;
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 18px 0 180px;
+
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.header-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 10px;
+  color: #172033;
+}
+
+.chevron {
+  font-size: 12px;
+}
+
+
+/* =========================
+   ESPACE DE TRAVAIL
+========================= */
+
+.workspace {
+  display: flex;
+
+  min-height: calc(100vh - 42px);
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 160px;
+
+  flex-shrink: 0;
+
+  background-color: #ffffff;
+
+  border-right: 1px solid #eeeeee;
+}
+
+
+/* Logo de la sidebar */
+
+.sidebar-logo {
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 25px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #172033;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 0;
+}
+
+.menu-button {
+  width: 100%;
+
+  height: 38px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-left: 3px solid transparent;
+
+  background-color: transparent;
+
+  text-align: left;
+
+  font-size: 11px;
+
+  color: #172033;
+
+  cursor: pointer;
+}
+
+
+/* Survol */
+
+.menu-button:hover {
+  background-color: #f4f7fc;
+
+  color: #2f80ed;
+}
+
+
+/* Élément actif */
+
+.menu-button:first-child {
+  background-color: #edf4ff;
+
+  border-left-color: #2f80ed;
+
+  color: #2f80ed;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   CONTENU PRINCIPAL
+========================= */
+
+.main-content {
+  flex: 1;
+
+  padding: 20px 18px;
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+.welcome-section h1 {
+  font-size: 19px;
+
+  font-weight: 700;
+
+  margin-bottom: 2px;
+
+  color: #172033;
+}
+
+.welcome-section p {
+  font-size: 10px;
+
+  color: #6b7280;
+}
