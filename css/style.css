@@ -477,3 +477,327 @@ body {
   color: #2563eb;
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+
+/* =========================
+   MODULE RÉSUMÉ
+========================= */
+
+.module-section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.module-header {
+  margin-bottom: 28px;
+}
+
+.module-header h1 {
+  margin-bottom: 8px;
+}
+
+
+/* =========================
+   CARTE DE SAISIE
+========================= */
+
+.resume-card,
+.result-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 22px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+
+/* =========================
+   HEADER DES CARTES
+========================= */
+
+.input-header,
+.result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.input-header h3,
+.result-header h3 {
+  margin: 0 0 5px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #172033;
+}
+
+.input-header p,
+.result-header p {
+  margin: 0;
+
+  font-size: 11px;
+  color: #7a8494;
+}
+
+
+/* =========================
+   COMPTEUR
+========================= */
+
+.text-counter {
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background-color: #f4f7fc;
+
+  font-size: 10px;
+  color: #64748b;
+}
+
+
+/* =========================
+   ZONE DE TEXTE
+========================= */
+
+#resume-input {
+  display: block;
+
+  width: 100%;
+  min-height: 220px;
+
+  padding: 16px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+
+  background-color: #fafbfc;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+
+  color: #172033;
+
+  resize: vertical;
+
+  outline: none;
+
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+#resume-input::placeholder {
+  color: #a0a8b5;
+}
+
+#resume-input:focus {
+  border-color: #2f80ed;
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.resume-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 16px;
+}
+
+.info-text {
+  font-size: 10px;
+  color: #8a93a1;
+}
+
+#resume-button {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 7px;
+
+  background-color: #2f80ed;
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+#resume-button:hover {
+  background-color: #2563eb;
+}
+
+#resume-button:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================
+   RÉSULTAT
+========================= */
+
+.result-card {
+  min-height: 180px;
+}
+
+.result-box {
+  min-height: 120px;
+
+  padding: 18px;
+
+  border: 1px solid #edf0f3;
+  border-radius: 8px;
+
+  background-color: #fafbfc;
+}
+
+
+/* =========================
+   ÉTAT VIDE
+========================= */
+
+.empty-result {
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.empty-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+
+  border-radius: 50%;
+
+  background-color: #edf4ff;
+
+  color: #2f80ed;
+
+  font-size: 15px;
+}
+
+.empty-result p {
+  margin-bottom: 5px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #374151;
+}
+
+.empty-result span {
+  font-size: 10px;
+  color: #8a93a1;
+}
+
+
+/* =========================
+   RÉSULTAT DU RÉSUMÉ
+========================= */
+
+.summary-result {
+  padding: 5px;
+}
+
+.summary-label {
+  display: inline-block;
+
+  margin-bottom: 12px;
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  background-color: #edf4ff;
+
+  color: #2f80ed;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.summary-result p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #374151;
+}
+
+
+/* =========================
+   ERREUR
+========================= */
+
+.error-result {
+  padding: 14px;
+
+  border-radius: 7px;
+
+  background-color: #fff5f5;
+
+  color: #d64545;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .module-section {
+    width: 100%;
+  }
+
+  .resume-card,
+  .result-card {
+    padding: 18px;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #resume-button {
+    width: 100%;
+  }
+}
+
