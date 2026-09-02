@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -10,40 +10,29 @@
   </head>
 
   <body>
-
     <!-- En-tête -->
     <header class="header">
-      <div class="header-logo">
-        AI Workspace
-      </div>
+      <div class="header-logo">AI Workspace</div>
       <div class="header-user">
         <span>Admin User</span>
         <span class="chevron">⌄</span>
       </div>
     </header>
 
-
     <!-- Contenu principal -->
     <div class="workspace">
-
       <!-- Barre latérale -->
       <aside class="sidebar">
-
         <nav class="sidebar-menu">
-
           <button class="menu-button" data-module="accueil">
             Tableau de bord
           </button>
 
-            <button class="menu-button" data-module="chat">
-            Chat 
-          </button>
+          <button class="menu-button" data-module="chat">Chat</button>
 
-            <button class="menu-button" data-module="resume">
-            Résume de Texte
-          </button>
+          <button class="menu-button" data-module="resume">Résume</button>
 
-            <button class="menu-button" data-module="classification">
+          <button class="menu-button" data-module="classification">
             Classification
           </button>
 
@@ -54,33 +43,187 @@
           <button class="menu-button" data-module="historique">
             Historique
           </button>
-
         </nav>
-
       </aside>
 
-
       <!-- Zone principale -->
-      <main class="main-content">
+      <section id="view-dashboard" class="view active">
+        <h1>Tableau de bord</h1>
 
-        <section class="welcome-section">
+        <p class="subtitle">
+          Bienvenue sur votre espace de travail intelligent.
+        </p>
 
-          <h1>Tableau de bord</h1>
+        <!-- STATISTIQUES -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label"> Nombre de jeux de données </span>
 
-          <p>
-            Bienvenue sur votre espace de travail intelligent 
-          </p>
+            <span class="stat-value" id="stat-donnee"> 24 </span>
 
-        </section>
+            <span> +3 ce mois-ci </span>
+          </div>
 
-      
-      </main>
+          <div class="stat-card">
+            <span class="stat-label"> Nombre de requêtes </span>
 
+            <span class="stat-value" id="stat-requetes"> 1,256 </span>
+
+            <span> +18% ce mois-ci </span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label"> Nombre de modèles disponibles </span>
+
+            <span class="stat-value" id="stat-modeles"> 12 </span>
+
+            <span> +2 ce mois-ci </span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label"> Utilisateurs actifs </span>
+
+            <span class="stat-value" id="stat-actif"> 8 </span>
+
+            <span> +2 ce mois-ci </span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label"> Tâches exécutées </span>
+
+            <span class="stat-value" id="stat-taches"> 342 </span>
+
+            <span> +22% ce mois-ci </span>
+          </div>
+        </div>
+
+        <!-- GRAPHIQUES -->
+
+        <div class="charts-section">
+          <div class="dashboard-card">
+            <h4>Requêtes par jour</h4>
+
+            <img
+              src="images/requetes par jour.png"
+              alt="Graphique des requêtes par jour"
+            />
+          </div>
+
+          <div class="dashboard-card">
+            <h4>Répartition des requêtes par service</h4>
+
+            <img
+              src="images/repartition des requetes.png"
+              alt="Graphique de répartition des requêtes par service"
+            />
+          </div>
+        </div>
+
+        <!-- ACTIVITE RECENTE + MODELES -->
+        <div class="dashboard-bottom">
+          <!-- ACTIVITE RECENTE -->
+          <div class="dashboard-card">
+            <h4>Activité récente</h4>
+
+            <table class="history-table" id="dashboard-recent">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Aperçu</th>
+                  <th>Utilisateur</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Résumé</td>
+                  <td>Résumé du document_projet.pdf</td>
+                  <td>Admin User</td>
+                  <td>21/05/2024 14:32</td>
+                </tr>
+
+                <tr>
+                  <td>Traduction</td>
+                  <td>Traduction d'un document</td>
+                  <td>Admin User</td>
+                  <td>21/05/2024 13:45</td>
+                </tr>
+
+                <tr>
+                  <td>Chat</td>
+                  <td>Question posée à l'IA</td>
+                  <td>Admin User</td>
+                  <td>21/05/2024 12:20</td>
+                </tr>
+
+                <tr>
+                  <td>Prédiction</td>
+                  <td>Nouvelle prédiction</td>
+                  <td>Admin User</td>
+                  <td>21/05/2024 11:10</td>
+                </tr>
+
+                <tr>
+                  <td>Résumé</td>
+                  <td>Résumé d'un article</td>
+                  <td>Admin User</td>
+                  <td>21/05/2024 10:30</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="link-button" data-module="historique">
+              Voir tout l'historique
+            </button>
+          </div>
+
+          <!-- MODELES POPULAIRES -->
+          <div class="dashboard-card">
+            <h4>Modèles populaires</h4>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Modèle</th>
+                  <th>Utilisateurs</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>mistral-7b-instruct</td>
+                  <td>532</td>
+                </tr>
+
+                <tr>
+                  <td>llama-3</td>
+                  <td>421</td>
+                </tr>
+
+                <tr>
+                  <td>gpt-4</td>
+                  <td>385</td>
+                </tr>
+
+                <tr>
+                  <td>gemma-2</td>
+                  <td>276</td>
+                </tr>
+
+                <tr>
+                  <td>phi-3</td>
+                  <td>198</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="link-button">Voir les modèles</button>
+          </div>
+        </div>
+      </section>
     </div>
 
-
-
     <script src="js/script.js"></script>
-
   </body>
 </html>
