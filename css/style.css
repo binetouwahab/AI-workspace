@@ -116,16 +116,12 @@ body {
   color: #2f80ed;
 }
 
-.menu-button:first-child {
-  background-color: #edf4ff;
-
+.menu-button.active {
+  background-color: #e8f0ff;
   border-left-color: #2f80ed;
-
-  color: #2f80ed;
-
+  color: #2563eb;
   font-weight: 600;
 }
-
 
 /* =========================
    CONTENU PRINCIPAL
@@ -476,3 +472,8 @@ body {
   }
 }
 
+.menu-button.active {
+  background-color: #e8f0ff;
+  color: #2563eb;
+  font-weight: 600;
+}

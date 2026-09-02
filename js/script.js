@@ -3,9 +3,15 @@
 // ==============================
 
 const menuButtons = document.querySelectorAll(".menu-button");
-const mainContent = document.querySelector(".main-content");
+const mainContent = document.querySelector(".view");
+
+// Sauvegarde du dashboard original
+const dashboardContent = mainContent.innerHTML;
 
 
+// ==============================
+// Navigation entre les modules
+// ==============================
 // ==============================
 // Navigation entre les modules
 // ==============================
@@ -16,17 +22,19 @@ menuButtons.forEach((button) => {
 
     const module = button.dataset.module;
 
+    // Retirer active de tous les boutons
     menuButtons.forEach((item) => {
       item.classList.remove("active");
     });
 
+    // Ajouter active uniquement au bouton cliqué
     button.classList.add("active");
 
+    // Afficher le module
     afficherModule(module);
   });
 
 });
-
 
 // ==============================
 // Affichage des modules
@@ -34,50 +42,46 @@ menuButtons.forEach((button) => {
 
 function afficherModule(module) {
 
-  if (module === "accueil") {
-    afficherAccueil();
-  }
+  switch (module) {
 
-  if (module === "resume") {
-    afficherResume();
-  }
+    case "accueil":
+      afficherAccueil();
+      break;
 
-  if (module === "traduction") {
-    afficherTraduction();
-  }
+    case "resume":
+      afficherResume();
+      break;
 
-  if (module === "chat") {
-    afficherChat();
-  }
+    case "traduction":
+      afficherTraduction();
+      break;
 
-  if (module === "prediction") {
-    afficherPrediction();
-  }
+    case "chat":
+      afficherChat();
+      break;
 
-  if (module === "historique") {
-    afficherHistorique();
-  }
+    case "historique":
+      afficherHistorique();
+      break;
 
-  if (module === "classification") {
-    afficherClassification();
+    case "classification":
+      afficherClassification();
+      break;
+
+    default:
+      afficherAccueil();
   }
 }
 
 
 // ==============================
-// Accueil
+// Tableau de bord
 // ==============================
 
 function afficherAccueil() {
 
-  mainContent.innerHTML = `
-    <section class="welcome-section">
-      <h1>Tableau de bord</h1>
-      <p>
-        Bienvenue sur votre espace de travail intelligent.
-      </p>
-    </section>
-  `;
+  // On remet le dashboard original
+  mainContent.innerHTML = dashboardContent;
 }
 
 
@@ -92,7 +96,7 @@ function afficherResume() {
 
       <h1>Résumé de texte</h1>
 
-      <p>
+      <p class="subtitle">
         Entrez un texte pour obtenir un résumé simulé.
       </p>
 
@@ -117,7 +121,6 @@ function afficherResume() {
   button.addEventListener("click", () => {
 
     const texte = document.querySelector("#resume-input").value;
-
     const result = document.querySelector("#resume-result");
 
     if (texte.trim() === "") {
