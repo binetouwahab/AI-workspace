@@ -1,3 +1,4 @@
+
 /* =========================
    RESET
 ========================= */
@@ -29,7 +30,6 @@ body {
   padding: 0 18px 0 180px;
 
   background-color: #ffffff;
-
   border-bottom: 1px solid #eeeeee;
 }
 
@@ -58,8 +58,6 @@ body {
 ========================= */
 
 .workspace {
-  display: flex;
-
   min-height: calc(100vh - 42px);
 }
 
@@ -71,30 +69,17 @@ body {
 .sidebar {
   width: 160px;
 
-  flex-shrink: 0;
+  position: fixed;
+  top: 42px;
+  left: 0;
+
+  height: calc(100vh - 42px);
 
   background-color: #ffffff;
 
   border-right: 1px solid #eeeeee;
-}
 
-
-/* Logo de la sidebar */
-
-.sidebar-logo {
-  height: 60px;
-
-  display: flex;
-  align-items: center;
-
-  padding-left: 25px;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  color: #172033;
-
-  border-bottom: 1px solid #eeeeee;
+  z-index: 1000;
 }
 
 
@@ -105,13 +90,10 @@ body {
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-
-  padding-top: 0;
 }
 
 .menu-button {
   width: 100%;
-
   height: 38px;
 
   padding: 0 20px;
@@ -124,23 +106,15 @@ body {
   text-align: left;
 
   font-size: 11px;
-
   color: #172033;
 
   cursor: pointer;
 }
 
-
-/* Survol */
-
 .menu-button:hover {
   background-color: #f4f7fc;
-
   color: #2f80ed;
 }
-
-
-/* Élément actif */
 
 .menu-button:first-child {
   background-color: #edf4ff;
@@ -157,80 +131,39 @@ body {
    CONTENU PRINCIPAL
 ========================= */
 
-.main-content {
-  flex: 1;
+.view {
+  margin-left: 160px;
 
-  padding: 20px 18px;
+  width: calc(100% - 160px);
+
+  min-width: 0;
+
+  padding: 28px 32px 40px;
+
+  background-color: #fafbfc;
 }
 
 
 /* =========================
-   TITRE
+   TITRE DU DASHBOARD
 ========================= */
 
-.welcome-section h1 {
-  font-size: 19px;
+.view h1 {
+  margin: 0;
 
+  font-size: 22px;
   font-weight: 700;
-
-  margin-bottom: 2px;
 
   color: #172033;
 }
 
-.welcome-section p {
-  font-size: 10px;
+.subtitle {
+  margin-top: 7px;
+  margin-bottom: 26px;
 
+  font-size: 12px;
   color: #6b7280;
 }
-
-
-/* ==============================
-   Cartes des graphiques
-   ============================== */
-
-.dashboard-card {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.dashboard-card h4 {
-  margin: 0 0 20px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-/* Images des graphiques */
-.dashboard-card img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Conteneur des deux graphiques */
-.charts-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 25px;
-}
-
-/* Adaptation aux petits écrans */
-@media (max-width: 900px) {
-  .charts-section {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
 
 
 /* =========================
@@ -239,75 +172,307 @@ body {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 18px;
+
   width: 100%;
 }
 
 .stat-card {
-  background-color: #ffffff;
-  border: 1px solid #e6e9ef;
-  border-radius: 8px;
+  min-height: 135px;
 
-  min-height: 132px;
-  padding: 24px 22px;
+  padding: 21px 20px;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-/* Titre de la statistique */
 .stat-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #252b3a;
+  margin-bottom: 14px;
 
-  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+
+  color: #374151;
 }
 
-/* Grande valeur */
 .stat-value {
-  font-size: 28px;
-  font-weight: 500;
+  margin-bottom: 13px;
+
+  font-size: 27px;
   line-height: 1;
 
+  font-weight: 600;
+
   color: #172033;
-
-  margin-bottom: 14px;
 }
 
-/* Texte d'évolution */
 .stat-card > span:last-child {
+  margin-top: auto;
+
   font-size: 11px;
-  color: #4d94d8;
 }
 
-/* Couleurs différentes comme sur la maquette */
 
-/* Carte 1 */
+/* Couleurs des évolutions */
+
 .stat-card:nth-child(1) > span:last-child {
   color: #5b9bd5;
 }
 
-/* Carte 2 */
 .stat-card:nth-child(2) > span:last-child {
   color: #55a868;
 }
 
-/* Carte 3 */
 .stat-card:nth-child(3) > span:last-child {
   color: #8064a2;
 }
 
-/* Carte 4 */
 .stat-card:nth-child(4) > span:last-child {
   color: #e6b23c;
 }
 
-/* Carte 5 */
 .stat-card:nth-child(5) > span:last-child {
   color: #55a9c9;
 }
+
+
+/* =========================
+   CARTES
+========================= */
+
+.dashboard-card {
+  min-width: 0;
+
+  padding: 20px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.dashboard-card h4 {
+  margin: 0 0 18px;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  color: #172033;
+}
+
+
+/* =========================
+   GRAPHIQUES
+========================= */
+
+.charts-section {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  margin-top: 22px;
+}
+
+.charts-section .dashboard-card {
+  min-height: 280px;
+}
+
+.dashboard-card img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  height: 220px;
+
+  object-fit: contain;
+}
+
+
+/* =========================
+   ACTIVITÉ + MODÈLES
+========================= */
+
+.dashboard-bottom {
+  display: grid;
+
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+
+  gap: 20px;
+
+  margin-top: 22px;
+}
+
+
+/* =========================
+   TABLEAUX
+========================= */
+
+.dashboard-card table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+.dashboard-card thead {
+  background-color: #f8fafc;
+}
+
+.dashboard-card th {
+  padding: 11px 13px;
+
+  text-align: left;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #64748b;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dashboard-card td {
+  padding: 12px 13px;
+
+  text-align: left;
+
+  font-size: 11px;
+
+  color: #374151;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.dashboard-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dashboard-card tbody tr:hover {
+  background-color: #fafcff;
+}
+
+
+/* =========================
+   TABLEAU ACTIVITÉ RÉCENTE
+========================= */
+
+.history-table th:nth-child(1),
+.history-table td:nth-child(1) {
+  width: 15%;
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+  width: 42%;
+}
+
+.history-table th:nth-child(3),
+.history-table td:nth-child(3) {
+  width: 20%;
+}
+
+.history-table th:nth-child(4),
+.history-table td:nth-child(4) {
+  width: 23%;
+}
+
+
+/* =========================
+   BOUTONS
+========================= */
+
+.link-button {
+  display: inline-block;
+
+  margin-top: 16px;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #2f80ed;
+
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  .view {
+    padding: 24px 20px 35px;
+  }
+
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .view {
+    padding: 20px 15px 30px;
+  }
+
+  .dashboard-card {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .history-table,
+  .dashboard-card table {
+    min-width: 600px;
+  }
+}
+
