@@ -9,9 +9,7 @@ const mainContent = document.querySelector(".view");
 const dashboardContent = mainContent.innerHTML;
 
 
-// ==============================
-// Navigation entre les modules
-// ==============================
+
 // ==============================
 // Navigation entre les modules
 // ==============================
@@ -63,12 +61,13 @@ function afficherModule(module) {
       afficherChat();
       break;
 
-    case "historique":
-      afficherHistorique();
+    case "classification":
+      afficherPrediction();
       break;
 
-    case "classification":
-      afficherClassification();
+
+    case "historique":
+      afficherHistorique();
       break;
 
     default:
@@ -227,15 +226,168 @@ async function traduireTexte() {
 }
 
 
+// chatbot
+function afficherChat() {
+  mainContent.innerHTML = `
+    <section class="chat-section">
+
+      <div class="chat-header">
+        <div>
+          <h1>Chat IA</h1>
+          <p>Discutez avec votre assistant IA.</p>
+        </div>
+
+        <div class="chat-status">
+          <span class="status-dot"></span>
+          IA en ligne
+        </div>
+      </div>
+
+      <div class="chat-wrapper">
+
+        <div id="chat-messages" class="chat-messages">
+
+          <div class="message ai-message">
+            <div class="message-avatar">IA</div>
+
+            <div class="message-content">
+              <div class="message-name">Assistant IA</div>
+              <div class="message-bubble">
+                Bonjour ! 👋<br><br>
+                Je suis votre assistant IA. Comment puis-je vous aider ?
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="chat-input-area">
+
+          <div class="chat-input-wrapper">
+
+            <textarea
+              id="chat-input"
+              rows="1"
+              placeholder="Écrivez votre message..."
+            ></textarea>
+
+            <button id="chat-button" type="button">
+              <span>➤</span>
+            </button>
+
+          </div>
+
+          <p class="chat-hint">
+            Entrée pour envoyer · Shift + Entrée pour aller à la ligne
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+  `;
+
+  const chatInput = document.querySelector("#chat-input");
+  const chatButton = document.querySelector("#chat-button");
+  const chatMessages = document.querySelector("#chat-messages");
+
+  function ajouterMessage(message, type) {
+
+    const messageElement = document.createElement("div");
+
+    if (type === "user") {
+      messageElement.className = "message user-message";
+
+      messageElement.innerHTML = `
+        <div class="message-content">
+          <div class="message-name">Vous</div>
+          <div class="message-bubble">
+            ${message.replace(/\n/g, "<br>")}
+          </div>
+        </div>
+      `;
+    }
+
+    if (type === "ai") {
+      messageElement.className = "message ai-message";
+
+      messageElement.innerHTML = `
+        <div class="message-avatar">IA</div>
+
+        <div class="message-content">
+          <div class="message-name">Assistant IA</div>
+
+          <div class="message-bubble">
+            ${message}
+          </div>
+        </div>
+      `;
+    }
+
+    chatMessages.appendChild(messageElement);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function envoyerMessage() {
+
+    const message = chatInput.value.trim();
+
+    if (message === "") {
+      return;
+    }
+
+    // Affichage du message utilisateur
+    ajouterMessage(message, "user");
+
+    // Vider le champ
+    chatInput.value = "";
+
+    // Réponse simulée
+    setTimeout(() => {
+
+      ajouterMessage(
+        "Je comprends votre demande. Ceci est une réponse simulée de l’intelligence artificielle.",
+        "ai"
+      );
+
+    }, 700);
+  }
+
+  // Bouton envoyer
+  chatButton.addEventListener("click", envoyerMessage);
+
+  // Entrée = envoyer
+  chatInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter" && !event.shiftKey) {
+
+      event.preventDefault();
+
+      envoyerMessage();
+    }
+
+  });
+
+  // Agrandir automatiquement le textarea
+  chatInput.addEventListener("input", () => {
+
+    chatInput.style.height = "auto";
+
+    chatInput.style.height =
+      Math.min(chatInput.scrollHeight, 150) + "px";
+
+  });
+
+  // Focus automatique
+  chatInput.focus();
+}
 
 
 
 
-
-
-
-
-
+// 
 
 
 

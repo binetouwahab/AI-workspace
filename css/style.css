@@ -876,3 +876,325 @@ body {
   color: #4b5563;
   line-height: 1.6;
 }
+
+
+
+
+
+/* =========================
+   CHAT IA
+========================= */
+
+.chat-section {
+  height: calc(100vh - 42px);
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px 40px;
+
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   CHAT HEADER
+========================= */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid #e8ebf0;
+}
+
+.chat-header h1 {
+  margin-bottom: 6px;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  color: #172033;
+}
+
+.chat-header p {
+  color: #727b8c;
+  font-size: 14px;
+}
+
+.chat-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  border: 1px solid #e5e8ed;
+  border-radius: 20px;
+
+  color: #596273;
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background-color: #28a745;
+}
+
+
+/* =========================
+   CHAT WRAPPER
+========================= */
+
+.chat-wrapper {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 950px;
+
+  margin: 0 auto;
+
+  min-height: 0;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.chat-messages {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 35px 15px 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+  display: flex;
+
+  width: 100%;
+}
+
+.message-content {
+  max-width: 70%;
+}
+
+.message-name {
+  margin-bottom: 7px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #7a8393;
+}
+
+.message-bubble {
+  padding: 13px 17px;
+
+  border-radius: 14px;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  word-wrap: break-word;
+}
+
+
+/* =========================
+   IA MESSAGE
+========================= */
+
+.ai-message {
+  justify-content: flex-start;
+
+  gap: 11px;
+}
+
+.message-avatar {
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background-color: #172033;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ai-message .message-bubble {
+  background-color: #f4f6f8;
+
+  color: #273044;
+
+  border-top-left-radius: 4px;
+}
+
+
+/* =========================
+   USER MESSAGE
+========================= */
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.user-message .message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.user-message .message-bubble {
+  background-color: #172033;
+
+  color: #ffffff;
+
+  border-top-right-radius: 4px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.chat-input-area {
+  padding: 15px 15px 5px;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+
+  padding: 10px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 15px;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#chat-input {
+  flex: 1;
+
+  min-height: 42px;
+  max-height: 150px;
+
+  padding: 10px 12px;
+
+  border: none;
+  outline: none;
+
+  resize: none;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  color: #172033;
+
+  background-color: transparent;
+}
+
+#chat-input::placeholder {
+  color: #9aa2af;
+}
+
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+#chat-button {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 11px;
+
+  background-color: #172033;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease,
+              opacity 0.2s ease;
+}
+
+#chat-button span {
+  font-size: 18px;
+}
+
+#chat-button:hover {
+  opacity: 0.9;
+
+  transform: translateY(-1px);
+}
+
+#chat-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   HINT
+========================= */
+
+.chat-hint {
+  margin-top: 8px;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  color: #9aa2af;
+}
+
+
+
+
+
+
+
+
+
+
+
