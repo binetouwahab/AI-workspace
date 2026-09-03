@@ -19,7 +19,6 @@ body {
 /* =========================
    HEADER
 ========================= */
-
 .header {
   height: 42px;
 
@@ -30,7 +29,17 @@ body {
   padding: 0 18px 0 180px;
 
   background-color: #ffffff;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  /* Fixe le header en haut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /* Le header reste au-dessus des autres éléments */
+  z-index: 1000;
 }
 
 .header-logo {
@@ -127,18 +136,37 @@ body {
    CONTENU PRINCIPAL
 ========================= */
 
+.header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 18px 0 180px;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+}
+
 .view {
   margin-left: 160px;
+  margin-top: 42px;
 
   width: calc(100% - 160px);
-
   min-width: 0;
 
   padding: 28px 32px 40px;
 
   background-color: #fafbfc;
 }
-
 
 /* =========================
    TITRE DU DASHBOARD
@@ -417,6 +445,8 @@ body {
 .link-button:hover {
   text-decoration: underline;
 }
+
+
 
 
 /* =========================
@@ -1190,11 +1220,219 @@ body {
 
 
 
+/* =========================
+   PREDICTION
+========================= */
+
+.prediction-form {
+  width: 100%;
+  max-width: 700px;
+
+  margin-top: 30px;
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(23, 32, 51, 0.06);
+  box-sizing: border-box;
+}
 
 
+/* ==============================
+   GROUPE DE CHAMP
+   ============================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 
+/* ==============================
+   LABEL
+   ============================== */
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #172033;
+}
 
 
+/* ==============================
+   INPUT
+   ============================== */
+
+.form-group input {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+
+  background-color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  color: #172033;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
 
+/* Placeholder */
+
+.form-group input::placeholder {
+  color: #9aa1ad;
+}
+
+
+/* Focus */
+
+.form-group input:focus {
+  border-color: #172033;
+
+  box-shadow: 0 0 0 3px rgba(23, 32, 51, 0.08);
+}
+
+
+/* ==============================
+   BOUTON
+   ============================== */
+
+#prediction-button {
+  align-self: flex-start;
+
+  padding: 12px 24px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #172033;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Survol */
+
+#prediction-button:hover {
+  background-color: #26334d;
+
+  box-shadow: 0 4px 10px rgba(23, 32, 51, 0.15);
+
+  transform: translateY(-1px);
+}
+
+
+/* Clic */
+
+#prediction-button:active {
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   RÉSULTAT
+   ============================== */
+
+#prediction-result {
+  width: 100%;
+  max-width: 700px;
+
+  margin-top: 28px;
+  padding: 24px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-sizing: border-box;
+
+  line-height: 1.6;
+  color: #172033;
+
+  box-shadow: 0 4px 12px rgba(23, 32, 51, 0.05);
+}
+
+
+/* Titre du résultat */
+
+#prediction-result h2 {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #172033;
+}
+
+
+/* Paragraphes */
+
+#prediction-result p {
+  margin: 8px 0;
+
+  font-size: 14px;
+}
+
+
+/* ==============================
+   MESSAGE DE PRÉDICTION
+   ============================== */
+
+.prediction-message {
+  margin-top: 20px !important;
+  padding: 16px;
+
+  border-radius: 8px;
+
+  background-color: #f5f7fa;
+
+  border-left: 4px solid #172033;
+}
+
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 768px) {
+
+  .prediction-form,
+  #prediction-result {
+    max-width: 100%;
+  }
+
+  .prediction-form {
+    padding: 20px;
+  }
+
+}

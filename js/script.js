@@ -388,7 +388,109 @@ function afficherChat() {
 
 
 // 
+// ==============================
+// Prédiction
+// ==============================
 
+function afficherPrediction() {
+
+  mainContent.innerHTML = `
+    <section class="module-section">
+
+      <h1>Prédiction</h1>
+
+      <p class="subtitle">
+        Entrez les informations nécessaires pour obtenir une prédiction fictive.
+      </p>
+
+      <div class="prediction-form">
+
+        <div class="form-group">
+          <label for="prediction-age">Âge</label>
+
+          <input
+            type="number"
+            id="prediction-age"
+            placeholder="Entrez votre âge"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="prediction-revenu">Revenu</label>
+
+          <input
+            type="number"
+            id="prediction-revenu"
+            placeholder="Entrez votre revenu"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="prediction-ville">Ville</label>
+
+          <input
+            type="text"
+            id="prediction-ville"
+            placeholder="Entrez votre ville"
+          />
+        </div>
+
+        <button id="prediction-button">
+          Prédire
+        </button>
+
+      </div>
+
+      <div id="prediction-result">
+        La prédiction apparaîtra ici.
+      </div>
+
+    </section>
+  `;
+
+  const ageInput = document.querySelector("#prediction-age");
+  const revenuInput = document.querySelector("#prediction-revenu");
+  const villeInput = document.querySelector("#prediction-ville");
+
+  const button = document.querySelector("#prediction-button");
+  const result = document.querySelector("#prediction-result");
+
+  button.addEventListener("click", () => {
+
+    const age = ageInput.value.trim();
+    const revenu = revenuInput.value.trim();
+    const ville = villeInput.value.trim();
+
+    if (age === "" || revenu === "" || ville === "") {
+
+      result.textContent =
+        "Veuillez remplir tous les champs.";
+
+      return;
+    }
+
+    result.innerHTML = `
+      <h2>Résultat de la prédiction</h2>
+
+      <p>
+        <strong>Âge :</strong> ${age} ans
+      </p>
+
+      <p>
+        <strong>Revenu :</strong> ${revenu}
+      </p>
+
+      <p>
+        <strong>Ville :</strong> ${ville}
+      </p>
+
+      <p class="prediction-message">
+        <strong>Prédiction :</strong>
+        Profil susceptible d'effectuer un achat prochainement.
+      </p>
+    `;
+  });
+}
 
 
 
