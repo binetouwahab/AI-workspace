@@ -132,3 +132,92 @@ function afficherResume() {
       "Résumé simulé : ce texte présente les idées principales du contenu fourni.";
   });
 }
+
+
+
+
+
+function afficherTraduction() {
+  const view = document.getElementById("view-dashboard");
+
+  view.innerHTML = `
+    <h1>Traduction</h1>
+
+    <p class="subtitle">
+      Entrez un texte et choisissez la langue de traduction.
+    </p>
+
+    <div class="module-section">
+
+      <label for="traduction-input">Texte à traduire</label>
+
+      <textarea
+        id="traduction-input"
+        placeholder="Entrez votre texte ici..."
+      ></textarea>
+
+      <label for="traduction-langue">
+        Traduire vers
+      </label>
+
+      <select id="traduction-langue">
+        <option value="en">Anglais</option>
+        <option value="es">Espagnol</option>
+        <option value="de">Allemand</option>
+        <option value="it">Italien</option>
+      </select>
+
+      <button id="traduction-button">
+        Traduire
+      </button>
+
+      <div class="result-box">
+        <h2>Résultat</h2>
+
+        <p id="traduction-result">
+          La traduction apparaîtra ici.
+        </p>
+      </div>
+
+    </div>
+  `;
+
+  const bouton = document.getElementById("traduction-button");
+
+  bouton.addEventListener("click", traduireTexte);
+}
+
+async function traduireTexte() {
+  const texte = document.getElementById("traduction-input").value;
+  const langue = document.getElementById("traduction-langue").value;
+  const resultat = document.getElementById("traduction-result");
+
+  if (texte.trim() === "") {
+    resultat.textContent = "Veuillez entrer un texte.";
+    return;
+  }
+
+  resultat.textContent = "Traduction en cours...";
+
+  try {
+    const url =
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(texte)}&langpair=fr|${langue}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de la traduction");
+    }
+
+    const data = await response.json();
+
+    resultat.textContent =
+      data.responseData.translatedText;
+
+  } catch (error) {
+    console.error(error);
+
+    resultat.textContent =
+      "Impossible d'effectuer la traduction.";
+  }
+}
