@@ -27,11 +27,14 @@ menuButtons.forEach((button) => {
       item.classList.remove("active");
     });
 
-    // Ajouter active uniquement au bouton cliqué
+    // Activer le bouton sélectionné
     button.classList.add("active");
 
     // Afficher le module
     afficherModule(module);
+
+    // Sauvegarder le module actuel
+    localStorage.setItem("moduleActif", module);
   });
 
 });
@@ -138,9 +141,8 @@ function afficherResume() {
 
 // tradution
 function afficherTraduction() {
-  const view = document.getElementById("view-dashboard");
 
-  view.innerHTML = `
+  mainContent.innerHTML = `
     <h1>Traduction</h1>
 
     <p class="subtitle">
@@ -149,7 +151,9 @@ function afficherTraduction() {
 
     <div class="module-section">
 
-      <label for="traduction-input">Texte à traduire</label>
+      <label for="traduction-input">
+        Texte à traduire
+      </label>
 
       <textarea
         id="traduction-input"
@@ -220,4 +224,48 @@ async function traduireTexte() {
     resultat.textContent =
       "Impossible d'effectuer la traduction.";
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// Restaurer le module après actualisation
+// ==============================
+
+const dernierModule = localStorage.getItem("moduleActif");
+
+if (dernierModule) {
+
+  // Afficher le dernier module
+  afficherModule(dernierModule);
+
+  // Mettre le bouton correspondant en active
+  menuButtons.forEach((button) => {
+
+    if (button.dataset.module === dernierModule) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+
+  });
 }
