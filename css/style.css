@@ -1436,3 +1436,342 @@ body {
   }
 
 }
+
+
+/* =========================
+   HISTORIQUE
+========================= */
+
+.history-section {
+  width: 100%;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.history-header h1 {
+  margin-bottom: 8px;
+}
+
+
+/* =========================
+   BOUTON VIDER
+========================= */
+
+.clear-history-button {
+  padding: 11px 17px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+
+  background-color: #ffffff;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.clear-history-button:hover {
+  background-color: #f5f7fa;
+  border-color: #cfd5dc;
+}
+
+
+/* =========================
+   RECHERCHE
+========================= */
+
+.history-search {
+  width: 100%;
+
+  margin-bottom: 24px;
+}
+
+#history-search-input {
+  width: 100%;
+
+  padding: 13px 16px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 9px;
+
+  background-color: #ffffff;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+#history-search-input::placeholder {
+  color: #929aa8;
+}
+
+#history-search-input:focus {
+  border-color: #172033;
+  box-shadow: 0 0 0 3px rgba(23, 32, 51, 0.05);
+}
+
+
+/* =========================
+   LISTE
+========================= */
+
+#history-list {
+  width: 100%;
+}
+
+
+/* =========================
+   ÉLÉMENT HISTORIQUE
+========================= */
+
+.history-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  width: 100%;
+
+  padding: 20px;
+
+  margin-bottom: 14px;
+
+  border: 1px solid #e5e8ed;
+  border-radius: 10px;
+
+  background-color: #ffffff;
+
+  transition: 0.2s ease;
+}
+
+.history-item:hover {
+  border-color: #d6dbe2;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+/* =========================
+   CONTENU
+========================= */
+
+.history-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =========================
+   TYPE + DATE
+========================= */
+
+.history-top {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.history-type {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background-color: #f1f3f5;
+
+  color: #172033;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.history-date {
+  color: #929aa8;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+.history-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #929aa8;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   REQUÊTE
+========================= */
+
+.history-query {
+  margin-bottom: 15px;
+}
+
+.history-query p {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  word-break: break-word;
+}
+
+
+/* =========================
+   RÉSULTAT
+========================= */
+
+.history-result p {
+  margin: 0;
+
+  color: #70798a;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  word-break: break-word;
+}
+
+
+/* =========================
+   BOUTON SUPPRIMER
+========================= */
+
+.delete-history-button {
+  flex-shrink: 0;
+
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 7px;
+
+  background-color: #f1f3f5;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.delete-history-button:hover {
+  background-color: #e5e8ed;
+}
+
+
+/* =========================
+   HISTORIQUE VIDE
+========================= */
+
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 250px;
+
+  padding: 40px;
+
+  border: 1px dashed #dfe3e8;
+  border-radius: 10px;
+
+  text-align: center;
+
+  background-color: #fafbfc;
+}
+
+.empty-history-icon {
+  margin-bottom: 12px;
+
+  font-size: 30px;
+}
+
+.empty-history h3 {
+  margin-bottom: 7px;
+
+  color: #172033;
+
+  font-size: 16px;
+}
+
+.empty-history p {
+  color: #929aa8;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+  .history-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .clear-history-button {
+    width: 100%;
+  }
+
+  .history-item {
+    flex-direction: column;
+  }
+
+  .delete-history-button {
+    width: 100%;
+  }
+
+}

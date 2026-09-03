@@ -1,3 +1,5 @@
+
+
 // ==============================
 // Récupération des éléments
 // ==============================
@@ -435,33 +437,60 @@ function afficherPrediction() {
           />
         </div>
 
-        <button id="prediction-button">
+        <button
+          id="prediction-button"
+          type="button"
+        >
           Prédire
         </button>
 
       </div>
 
-      <div id="prediction-result">
+      <div
+        id="prediction-result"
+        class="result-box"
+      >
         La prédiction apparaîtra ici.
       </div>
 
     </section>
   `;
 
-  const ageInput = document.querySelector("#prediction-age");
-  const revenuInput = document.querySelector("#prediction-revenu");
-  const villeInput = document.querySelector("#prediction-ville");
 
-  const button = document.querySelector("#prediction-button");
-  const result = document.querySelector("#prediction-result");
+  const ageInput =
+    document.querySelector("#prediction-age");
 
-  button.addEventListener("click", () => {
+  const revenuInput =
+    document.querySelector("#prediction-revenu");
 
-    const age = ageInput.value.trim();
-    const revenu = revenuInput.value.trim();
-    const ville = villeInput.value.trim();
+  const villeInput =
+    document.querySelector("#prediction-ville");
 
-    if (age === "" || revenu === "" || ville === "") {
+  const button =
+    document.querySelector("#prediction-button");
+
+  const result =
+    document.querySelector("#prediction-result");
+
+
+  button.addEventListener("click", function () {
+
+    const age =
+      ageInput.value.trim();
+
+    const revenu =
+      revenuInput.value.trim();
+
+    const ville =
+      villeInput.value.trim();
+
+
+    // Vérification des champs
+    if (
+      age === "" ||
+      revenu === "" ||
+      ville === ""
+    ) {
 
       result.textContent =
         "Veuillez remplir tous les champs.";
@@ -469,28 +498,427 @@ function afficherPrediction() {
       return;
     }
 
+
+    // ==============================
+    // PRÉDICTION SIMULÉE
+    // ==============================
+
+    const prediction =
+      "Profil susceptible d'effectuer un achat prochainement.";
+
+
+    // ==============================
+    // AFFICHER LE RÉSULTAT
+    // ==============================
+
     result.innerHTML = `
+
       <h2>Résultat de la prédiction</h2>
 
       <p>
-        <strong>Âge :</strong> ${age} ans
+        <strong>Âge :</strong>
+        ${age} ans
       </p>
 
       <p>
-        <strong>Revenu :</strong> ${revenu}
+        <strong>Revenu :</strong>
+        ${revenu}
       </p>
 
       <p>
-        <strong>Ville :</strong> ${ville}
+        <strong>Ville :</strong>
+        ${ville}
       </p>
 
       <p class="prediction-message">
+
         <strong>Prédiction :</strong>
-        Profil susceptible d'effectuer un achat prochainement.
+        ${prediction}
+
       </p>
+
     `;
+
+
+    // ==============================
+    // ENREGISTRER DANS L'HISTORIQUE
+    // ==============================
+
+    enregistrerRequete(
+      "Prédiction",
+      `Âge : ${age}, Revenu : ${revenu}, Ville : ${ville}`,
+      prediction
+    );
+
+    console.log("Prédiction enregistrée dans l'historique");
+
   });
+
 }
+
+
+
+// ==============================
+// HISTORIQUE
+// ==============================
+
+// Récupérer l'historique depuis le navigateur
+function recupererHistorique() {
+  return JSON.parse(
+    localStorage.getItem("historique")
+  ) || [];
+}
+
+
+// ==============================
+// ENREGISTRER UNE REQUÊTE
+// ==============================
+
+function enregistrerRequete(type, requete, resultat) {
+
+  const historique = recupererHistorique();
+
+  const nouvelleRequete = {
+    id: Date.now(),
+    type: type,
+    requete: requete,
+    resultat: resultat,
+    date: new Date().toLocaleString("fr-FR")
+  };
+
+  historique.push(nouvelleRequete);
+
+  localStorage.setItem(
+    "historique",
+    JSON.stringify(historique)
+  );
+}
+
+
+// ==============================
+// AFFICHER LE MODULE HISTORIQUE
+// ==============================
+
+function afficherHistorique() {
+
+  mainContent.innerHTML = `
+
+    <section class="module-section history-section">
+
+      <div class="history-header">
+
+        <div>
+          <h1>Historique</h1>
+
+          <p class="subtitle">
+            Consultez et gérez vos requêtes précédentes.
+          </p>
+        </div>
+
+        <button
+          id="clear-history-button"
+          class="clear-history-button"
+          type="button"
+        >
+          Vider l'historique
+        </button>
+
+      </div>
+
+
+      <!-- Recherche -->
+
+      <div class="history-search">
+
+        <input
+          type="text"
+          id="history-search-input"
+          placeholder="Rechercher une requête..."
+        />
+
+      </div>
+
+
+      <!-- Liste -->
+
+      <div id="history-list">
+      </div>
+
+    </section>
+
+  `;
+
+
+  // Affichage initial
+  afficherListeHistorique();
+
+
+  // ==============================
+  // RECHERCHE
+  // ==============================
+
+  const searchInput =
+    document.querySelector("#history-search-input");
+
+  searchInput.addEventListener("input", function () {
+
+    afficherListeHistorique(
+      this.value
+    );
+
+  });
+
+
+  // ==============================
+  // VIDER L'HISTORIQUE
+  // ==============================
+
+  const clearButton =
+    document.querySelector("#clear-history-button");
+
+  clearButton.addEventListener("click", function () {
+
+    const historique =
+      recupererHistorique();
+
+    if (historique.length === 0) {
+      return;
+    }
+
+    const confirmation = confirm(
+      "Voulez-vous vraiment vider tout l'historique ?"
+    );
+
+    if (!confirmation) {
+      return;
+    }
+
+    localStorage.removeItem("historique");
+
+    afficherListeHistorique();
+
+  });
+
+}
+
+
+// ==============================
+// AFFICHER LA LISTE
+// ==============================
+
+function afficherListeHistorique(recherche = "") {
+
+  const historyList =
+    document.querySelector("#history-list");
+
+
+  if (!historyList) {
+    return;
+  }
+
+
+  const historique =
+    recupererHistorique();
+
+
+  const texteRecherche =
+    recherche.toLowerCase().trim();
+
+
+  // Filtrer les résultats
+  const resultats =
+    historique.filter(function (element) {
+
+      return (
+
+        element.type
+          .toLowerCase()
+          .includes(texteRecherche)
+
+        ||
+
+        element.requete
+          .toLowerCase()
+          .includes(texteRecherche)
+
+        ||
+
+        element.resultat
+          .toLowerCase()
+          .includes(texteRecherche)
+
+      );
+
+    });
+
+
+  // ==============================
+  // AUCUN RÉSULTAT
+  // ==============================
+
+  if (resultats.length === 0) {
+
+    historyList.innerHTML = `
+
+      <div class="empty-history">
+
+        <div class="empty-history-icon">
+          🕘
+        </div>
+
+        <h3>Aucune requête trouvée</h3>
+
+        <p>
+          Votre historique apparaîtra ici
+          après vos premières requêtes.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  // ==============================
+  // AFFICHER LES REQUÊTES
+  // ==============================
+
+  historyList.innerHTML = resultats
+    .slice()
+    .reverse()
+    .map(function (element) {
+
+      return `
+
+        <article class="history-item">
+
+          <div class="history-item-content">
+
+            <div class="history-top">
+
+              <span class="history-type">
+                ${element.type}
+              </span>
+
+              <span class="history-date">
+                ${element.date}
+              </span>
+
+            </div>
+
+
+            <div class="history-query">
+
+              <span class="history-label">
+                Requête
+              </span>
+
+              <p>
+                ${element.requete}
+              </p>
+
+            </div>
+
+
+            <div class="history-result">
+
+              <span class="history-label">
+                Résultat
+              </span>
+
+              <p>
+                ${element.resultat}
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="delete-history-button"
+            data-id="${element.id}"
+            type="button"
+          >
+            Supprimer
+          </button>
+
+        </article>
+
+      `;
+
+    })
+    .join("");
+
+
+  // ==============================
+  // SUPPRIMER UNE REQUÊTE
+  // ==============================
+
+  document
+    .querySelectorAll(".delete-history-button")
+    .forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        const id =
+          Number(this.dataset.id);
+
+        supprimerRequete(id);
+
+      });
+
+    });
+
+}
+
+
+// ==============================
+// SUPPRIMER UNE REQUÊTE
+// ==============================
+
+function supprimerRequete(id) {
+
+  const historique =
+    recupererHistorique();
+
+
+  const nouvelHistorique =
+    historique.filter(function (element) {
+
+      return element.id !== id;
+
+    });
+
+
+  localStorage.setItem(
+    "historique",
+    JSON.stringify(nouvelHistorique)
+  );
+
+
+  afficherListeHistorique();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
