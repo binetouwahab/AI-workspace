@@ -136,7 +136,7 @@ function afficherResume() {
 
 
 
-
+// tradution
 function afficherTraduction() {
   const view = document.getElementById("view-dashboard");
 
